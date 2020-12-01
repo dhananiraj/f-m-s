@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Container, Row, Col, Spinner } from 'react-bootstrap';
 import { isLoggedIn } from '../lib/auth';
-import Sidebar from './Sidebar'
+import Sidebar from 'components/Sidebar'
 import { useRouter } from 'next/router';
 
 function InternalLayout({ children, ...props }) {
