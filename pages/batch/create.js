@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react'
 import InternalLayout from '../../components/InternalLayout'
 import { Container, FormControl, Form, Row, Col, Button } from 'react-bootstrap';
-import { client } from '../../lib/api';
+import { createClient } from '../../lib/api';
 import FileUpload from '../../components/FileUpload'
 
 export default function Create() {
-
+    const client = createClient();
     const [keys, setKeys] = useState([]);
     const [batchName, setBatchName] = useState();
     const [n, setN] = useState(1);
@@ -28,7 +28,6 @@ export default function Create() {
     const handleCreateBatch = async (e) => {
         e.preventDefault();
         try {
-            console.log(keys)
             const res = await client.post('/batch', {
                 batchName,
                 keys,
@@ -46,7 +45,8 @@ export default function Create() {
                 <Row className="py-3">
                     <Col>
                         Enter the Batch Name:
-                    <FormControl
+                    <Form.Control
+                            size="sm"
                             type="text"
                             value={batchName}
                             onChange={
@@ -59,6 +59,7 @@ export default function Create() {
                     <Col>
                         Search of user who can view:
                     <Form.Control
+                            size="sm"
                             as="select"
                             ref={viewerRef}
                         >
@@ -94,6 +95,7 @@ export default function Create() {
                 <Row>
                     <Col>
                         <Button
+                            size={"sm"}
                             className="btn-success pl-auto ml-auto"
                             onClick={
                                 handleCreateBatch

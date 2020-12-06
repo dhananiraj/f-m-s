@@ -22,6 +22,7 @@ const style = {
         maxWidth: 400,
         backgroundColor: "rgba(255,255,255,0.95)",
         borderRadius: 20,
+        marginBottom: 30
     }
 }
 
@@ -70,6 +71,79 @@ function index() {
     return (
         <div style={style.page}>
             <Particles
+                params={{
+                    "particles": {
+                        "number": {
+                            "value": 150,
+                            "density": {
+                                "enable": true,
+                                "value_area": 1500
+                            }
+                        },
+                        "line_linked": {
+                            "enable": true,
+                            "distance": 150,
+                            "color": "#ffffff",
+                            "opacity": 0.3687847739990702,
+                            "width": 3
+                        },
+                        "move": {
+                            "enable": true,
+                            "speed": 3,
+                            "direction": "none",
+                            "random": false,
+                            "straight": false,
+                            "out_mode": "out",
+                            "bounce": false,
+                            "attract": {
+                                "enable": false,
+                                "rotateX": 600,
+                                "rotateY": 1200
+                            }
+                        }
+                    },
+                    "interactivity": {
+                        "detect_on": "window",
+                        "events": {
+                            "onhover": {
+                                "enable": true,
+                                "mode": "repulse"
+                            },
+                            "onclick": {
+                                "enable": false,
+                                "mode": "bubble"
+                            },
+                            "resize": true
+                        },
+                        "modes": {
+                            "grab": {
+                                "distance": 400,
+                                "line_linked": {
+                                    "opacity": 1
+                                }
+                            },
+                            "bubble": {
+                                "distance": 400,
+                                "size": 40,
+                                "duration": 2,
+                                "opacity": 8,
+                                "speed": 3
+                            },
+                            "repulse": {
+                                "distance": 100,
+                                "duration": 0.4
+                            },
+                            "push": {
+                                "particles_nb": 4
+                            },
+                            "remove": {
+                                "particles_nb": 2
+                            }
+                        }
+                    },
+                    "retina_detect": true
+                }}
+
                 style={{
                     zIndex: 0,
                     position: 'fixed',
@@ -80,6 +154,12 @@ function index() {
             />
             <Container style={style.container}>
                 <center>
+                    <img
+                        style={{
+                            height: '80px'
+                        }}
+                        src="/logo.png"
+                    />
                     <h1>
                         Sign In
                     </h1>
@@ -154,6 +234,24 @@ function index() {
                     </small>
                 </center>
             </Container >
+            <footer
+                style={{
+                    bottom: 0,
+                    position: 'relative',
+                    width: '100%',
+                    background: 'rgba(255,255,255,0.7)'
+                }}
+            >
+                <center>
+                    <img
+                        style={{
+                            height: '200px'
+                        }}
+                        src="/footer.png"
+                    >
+                    </img>
+                </center>
+            </footer>
         </div >
     )
 }

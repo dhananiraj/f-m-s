@@ -27,14 +27,28 @@ function InternalLayout({ children, ...props }) {
                         <Spinner animation="border" role="status" />
                     </center>
                     :
-                    <Row>
-                        <Col xs={2} id="sidebar-wrapper">
+                    <>
+                        <div
+                            style={{
+                                width: 250,
+                                display: "inline-block",
+                                background: "#007bff",
+                                color: "white !important"
+                            }}
+                            id="sidebar-wrapper">
                             <Sidebar />
-                        </Col>
-                        <Col xs={10} id="page-content-wrapper pt-3" style={{ paddingTop: 30 }}>
-                            {children}
-                        </Col>
-                    </Row>
+                        </div>
+                        <div
+                            style={{
+                                display: "inline-block",
+                                width: "calc(100% - 250px)"
+                            }}
+                        >
+                            <div id="page-content-wrapper pt-3" style={{ width: '100%', paddingTop: 30 }}>
+                                {children}
+                            </div>
+                        </div>
+                    </>
             }
         </Container>
     )

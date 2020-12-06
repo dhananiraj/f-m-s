@@ -1,11 +1,13 @@
 import React, { useEffect, useState, useRef } from 'react'
-import InternalLayout from '../../components/InternalLayout'
+import InternalLayout from '../../../components/InternalLayout'
 import { Container, FormControl, Form, Row, Col, Button } from 'react-bootstrap';
-import { client } from '../../lib/api';
-import FileUpload from '../../components/FileUpload'
+import { createClient } from '../../../lib/api';
+import Link from "next/Link";
 
-export default function Create() {
 
+export default function view() {
+
+    const client = createClient();
     const [keys, setKeys] = useState([]);
     const [batchName, setBatchName] = useState();
     const [n, setN] = useState(1);
@@ -40,6 +42,7 @@ export default function Create() {
         }
     }
 
+    console.log(batches)
     return (
         <InternalLayout>
             <Container>
@@ -53,11 +56,18 @@ export default function Create() {
                 </Row>
                 {
                     batches.length > 0 ? batches?.map((batch, i) => (
-                        <Row key={i}>
+                        <Row key={i} className="py-2">
                             <Col>
                                 {
-                                    JSON.stringify(batch)
+                                    batch?.batchName
                                 }
+                            </Col>
+                            <Col>
+                                <Link href={`/batch/view/${batch._id}`}>
+                                    <a>
+                                        view
+                                    </a>
+                                </Link>
                             </Col>
                         </Row>
                     )) :
@@ -65,7 +75,7 @@ export default function Create() {
                             No Batch Assigned Yet
                         </p>
                 }
-            </Container>
-        </InternalLayout>
+            </Container >
+        </InternalLayout >
     )
 }
